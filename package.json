@@ -7,9 +7,9 @@
     "dev": "tsx watch ./src/server.ts",
     "knex": "node --no-warnings --loader tsx ./node_modules/.bin/knex",
     "lint": "eslint src --ext .ts --fix",
-    "knex:migrate:make": "knex --knexfile src/database/knexfile.ts migrate:make",
-    "knex:migrate:latest": "knex --knexfile src/database/knexfile.ts migrate:latest",
-    "knex:migrate:rollback": "knex --knexfile src/database/knexfile.ts migrate:rollback"
+    "knex:migrate:make": "knex --knexfile knexfile.ts migrate:make",
+    "knex:migrate:latest": "knex --knexfile knexfile.ts migrate:latest",
+    "knex:migrate:rollback": "knex --knexfile knexfile.ts migrate:rollback"
   },
   "keywords": [],
   "author": "",
