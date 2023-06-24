@@ -1,11 +1,13 @@
 import knexSetup from "knex";
 
-const knex = knexSetup({
+export const configKnex = {
   client: "better-sqlite3",
   useNullAsDefault: true,
   connection: {
     filename: "./tmp/mydb.db",
   },
-});
+};
+
+const knex = knexSetup(configKnex);
 
 export default knex;
