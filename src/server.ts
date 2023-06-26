@@ -5,7 +5,6 @@ import { randomUUID } from "crypto";
 const app = fastify();
 
 app.get("/", async () => {
-  // await knex("transactions").insert({ id: randomUUID(), title: "Mais um" });
   const tables = await knex("transactions").select("*");
 
   return tables;
