@@ -1,19 +1,20 @@
+import { env } from "env";
 import fastify from "fastify";
-import knex from "./db/database";
-import { randomUUID } from "crypto";
+import { transactiosnRoutes } from "routes/transactions";
 
 const app = fastify();
 
-app.get("/", async () => {
-  const tables = await knex("transactions").select("*");
-
-  return tables;
-});
+app.register(transactiosnRoutes);
 
 app
   .listen({
-    port: 3333,
+    port: env.PORT ? Number(env.PORT) : 3332,
   })
   .then(() => {
-    console.log("Servidor rodando em http://localhost:3333/");
+    console.log(
+      `${env.NODE_ENV.toUpperCase()}:`,
+      `Server is running at ${
+        env.PORT ? `http://localhost:${env.PORT}/` : "http://localhost:3332/"
+      }`
+    );
   });

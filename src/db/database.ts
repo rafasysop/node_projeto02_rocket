@@ -1,17 +1,15 @@
+import "dotenv/config";
+import { env } from "../env";
 import knexSetup, { Knex } from "knex";
 
 export const configKnex: Knex.Config = {
-  client: "better-sqlite3",
-  useNullAsDefault: true,
-  connection: {
-    filename: "./src/database/app.db",
-  },
+  client: "pg",
+  connection: env.DB_STRING,
+  searchPath: ["knex", "public"],
   migrations: {
     extension: "ts",
     directory: "./src/database/migrations",
   },
 };
 
-const knex = knexSetup(configKnex);
-
-export default knex;
+export const knex = knexSetup(configKnex);
